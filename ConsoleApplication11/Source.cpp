@@ -8,169 +8,287 @@
 
 using namespace std;
 
-void zadacha_1(char a, int b, int c);
-int zadacha_2(int p, int a);
-double min1(double, double);
-void largerOf(double*x,double *y);
-double sred(int *mas,int);
-char check(char);
-void IncTime(int H, int M, int S, int T);
-int  recur(int , int );
+void feelArray(int *mas, int n);
+void printArray(int *mas, int n);
+int sumArray(int *mas, int n);
+void second(int *mas, int n);
+int ifotr(int *mas, int n);
+void sort(int *mas, int n);
+void masvmas(int *mas1, int *mas2, int n);
+void fifth(int *mas, int n);
+void sixth(int *mas, int n, int *pol, int *otr, int *nol);
+int seventh(int *mas, int *mas1, int m, int n);
+void seventh(int *mas, int *mas1, int *mas3, int m, int n);
+int *ninth(int *mas, int n);
+
 void main()
 {
 	setlocale(LC_ALL, "Rus");
 	srand(time(NULL));
 	rand();
+	int x;
 	do
 	{
-		cout << "Какое задание вы хотите выбрать"<<endl;
-		int x;
+		cout << "Введите номер задания" << endl;
 		cin >> x;
-		if (x == 0)
-			break;
-		else if (x == 1)
+		switch (x)
 		{
-			char a;
-			int b, c;
-			cout << "Какой символ вы хотите видеть и сколько столбцов и строк должно быть" << endl;
-			cin >> a >> b >> c;
-			zadacha_1(a, b, c);
+		case 1:
+		{
+			int mas[5];
+			int n = 5;
+			feelArray(mas, n);
+			printArray(mas, n);
+			cout << endl << sumArray(mas, n) << endl;
 		}
-		else if (x == 2)
+		break;
+		case 2:
 		{
-			int p, a, b, c;
-			cout << "Введите числа которые вы хотите" << endl;
-			cin >> p >> a >> b >> c;
+			int mas[5];
+			int n = 5;
+			feelArray(mas, n);
+			printArray(mas, n);
+			second(mas, n);
+		}
+		break;
+		case 3:
+		{
+			int mas[10];
+			int n = 10;
+			feelArray(mas, n);
+			printArray(mas, n);
+			cout << endl;
+			sort(mas, n);
+			printArray(mas, n);
+		}
+		break;
+		case 4:
+		{
+			int mas1[10];
+			int mas2[10];
+			int n = 10;
+			feelArray(mas1, n);
+			masvmas(mas1, mas2, n);
+			printArray(mas1, n);
+			cout << endl;
+			printArray(mas2, n);
 
-			cout << zadacha_2(p, a)<<endl;
-			cout << zadacha_2(p, b) << endl;
-			cout << zadacha_2(p, c) << endl;
 		}
-		else if (x == 3)
+		break;
+		case 5:
 		{
-			cout << "введите значения X и Y\n";
-			double x , y ;
-			cin >> x >> y;
-			min1(x, y);
-		}
-		else if (x == 5)
-		{
-			cout << "введите значения X и Y\n";
-			double x, y;
-			cin >> x >> y;
-			largerOf(&x, &y);
-			cout << x << "\t" << y << endl;
-		}
-		else if (x == 6)
-		{
-			int const m = 10;
-			int mas[m];
-			for (int i = 0;i < m;i++)
-			{
-				mas[i] = rand() % 10;
-			}
-			cout << sred(mas, m);
-		   }
-		else if (x == 7)
-		{
-			char simvol;
-			while (true) {
-				cin >> simvol;
-				if (simvol == ';')
-					break;
-				else
-					 cout<<check(simvol);
-			}
-		
-		}
-		else if (x == 8)
-		{
-			cout << "введите время h:m:s и прибавленное время в сек.\n";
-			int H, M, S, T;cin >> H >> M >> S >> T;
-			IncTime(H, M, S, T);
+			int mas[10];
+			int n = 10;
+			feelArray(mas, n);
+			printArray(mas, n);
+			cout << endl;
+			fifth(mas, n);
 
-			
 		}
-		else if (x == 9)
+		break;
+		case 6:
 		{
-			cout << "введите число";
-			int n;cin >> n;
-			cout<<recur(n, 1);
-			//9.	Написать рекурсивную функцию для вычисления факториала натурального числа n.
+			int mas[10];
+			int n = 10;
+			int otr = 0, pol = 0, nol = 0;
+			feelArray(mas, n);
+			printArray(mas, n);
+			sixth(mas, n, &otr, &pol, &nol);
+			cout << endl
+				<< "Отриц=" << otr
+				<< " Полож=" << pol
+				<< " NULL=" << nol << endl;
+
 		}
-	} while (true);
-	
+		break;
+		case 7:
+		{
+			int m, n, a = 0;
+			cin >> m >> n;
+			int *mas = new int[m];
+			int *mas1 = new int[n];
+
+			feelArray(mas, n);
+			feelArray(mas1, m);
+
+			a = seventh(mas, mas1, m, n);
+
+			int *mas3 = new int[a];
+			seventh(mas, mas1, mas3, m, n);
+
+			cout << endl;
+			printArray(mas, n);
+			cout << endl;
+			printArray(mas1, m);
+			cout << endl;
+			printArray(mas3, a);
+
+		}
+		break;
+
+		case 8:
+		{
+			cout << "izi" << endl;
+		}
+		break;
+		case 9:
+		{
+			int mas[10];
+			int n = 10;
+			feelArray(mas, n);
+			printArray(mas, n);
+			cout << endl;
+			cout<<*ninth(mas, n);
+			cout << endl;
+
+		}
+		break;
+		}
+	} while (x > 0);
 
 }
-void zadacha_1(char a, int b, int c)
+void feelArray(int *mas, int n)
 {
-	cout << a << endl;
-	for (int i = 0;i < b;i++)
+	for (int i = 0; i < n; i++)
 	{
-		//cout << a << endl;
-		for (int j = 0;j < c;j++)
-		{
-			cout << a <<"\t";
-		}
-		cout << endl;
+		*(mas + i) = -10 + rand() % 100;
 	}
 }
-int zadacha_2(int p, int a)
-{
-	if (a == 0||a<0)
-		return 0;
 
-	a = exp(p*log(a));
+void printArray(int *mas, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << *(mas + i) << "\t";
+	}
+}
+int sumArray(int *mas, int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += *(mas + i);
+	}
+	return sum;
+}
+void second(int *mas, int n)
+{
+	for (int i = n - 1; i >= 0; i--)
+	{
+		cout << *(mas + i) << "\t";
+	}
+}
+int ifotr(int *mas, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		if (*(mas + i) < 0)
+			return 1;
+	}
+	return 0;
+}
+void sort(int *mas, int n)
+{
+	if (ifotr(mas, n) == 1)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = n - 1; j > i; j--)
+			{
+				if (*(mas + j) < *(mas + j - 1))
+				{
+					int x = *(mas + j);
+					*(mas + j) = *(mas + j - 1);
+					*(mas + j - 1) = x;
+
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = n - 1; j > i; j--)
+			{
+				if (*(mas + j) > *(mas + j - 1))
+				{
+					int x = *(mas + j);
+					*(mas + j) = *(mas + j - 1);
+					*(mas + j - 1) = x;
+
+				}
+			}
+		}
+	}
+}
+void masvmas(int *mas1, int *mas2, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		*(mas2 + i) = *(mas1 + i);
+	}
+}
+void fifth(int *mas, int n)
+{
+	for (int i = n - 1; i >= 0; i--)
+	{
+		cout << *(mas + i) << "\t";
+	}
+}
+void sixth(int *mas, int n, int *pol, int *otr, int *nol)
+{
+	for (int i = 0; i < n; i++)
+	{
+		if (*(mas + i) < 0)
+			*pol += 1;
+		else if (*(mas + i) > 0)
+			*otr += 1;
+		else if (*(mas + i) = 0)
+			*nol += 1;
+	}
+}
+int seventh(int *mas, int *mas1, int m, int n)
+{
+	int a = 0;
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (*(mas + i) == *(mas1 + j))
+				a++;
+		}
+	}
 	return a;
 }
+void seventh(int *mas, int *mas1, int *mas3, int m, int n)
+{
+	int k = 0;
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (*(mas + i) == *(mas1 + j))
+			{
+				*(mas3 + k) = *(mas + i);
+				k++;
+			}
+		}
+	}
+}
+int *ninth(int *mas,int n)
+{
+	int max = *(mas), maxIndex = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(mas + i) > max)
+		{
+			max = *(mas + i);
+			maxIndex = i;
+		}
+	}
+	return (mas+ maxIndex);
+}
 
-double min1(double x, double y)
-{
-	return x < y ? x : y;
-}
-void largerOf(double*x, double *y)
-{
-	if (*x > *y)
-		*y = *x;
-	else
-		*x =*y ;
-}
-double sred(int *mas,int m)
-{
-	double summ=0;
-	for (int i = 0;i < m;i++)
-		summ += mas[i];
-	summ = summ / m;
-	return summ;
-}
-char check(char simvol)
-{
-	if (simvol >= 65 && simvol <= 90)
-		return (int)simvol - 64;
-	else if (simvol >= 97 && simvol <= 122)
-		return (int)simvol - 96;
-	else
-		return 0;
-		
-//	for (int i=0;i < 256;i++)
-//	{
-//		cout<< i <<" - " << (char)i << endl;
-//}
-	//return 0;
-}
-void IncTime(int H, int M, int S, int T)
-{
-	S += T;
-	M = M + S / 60;
-	H = H + M / 60;
-	S=S % 60;
-	M=M % 60;
-	H=H % 24;
-	cout << H << ":" << M << ":" << S << endl;
-}
-int  recur(int n, int schet)
-{
-	if (n < schet)
-		return 1;
-	return schet*recur(n,schet+1);
-}
+
+
